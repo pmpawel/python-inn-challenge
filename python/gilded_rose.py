@@ -55,3 +55,23 @@ class Item:
 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+
+class StandardItem(Item):
+    def __init__(self, name, sell_in, quality):
+        super().__init__(name, sell_in, quality)
+    pass
+
+class AgedBrie(Item):
+    def __initls__(self, name, sell_in, quality):
+        super().__init__(name, sell_in, quality)
+    pass
+
+class Sulfuras(Item):
+    def __init__(self, name, sell_in, quality):
+        super().__init__(name, sell_in, quality)
+    pass
+
+class ConjuredItem(Item):
+    def __init__(self, name, sell_in, quality):
+        super().__init__(name, sell_in, quality)
+    pass
