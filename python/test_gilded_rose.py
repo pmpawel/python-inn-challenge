@@ -38,11 +38,20 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(-3, items[0].sell_in)
         self.assertEqual(6, items[0].quality)             
 
+class StandardItemTest(unittest.TestCase):
+    def test_standard_item(self):
+        item = StandardItem("foo", sell_in=2, quality=4)
+        print(f"before: {self}")
+        item.update_quality()
+        print(f"after: {self}")
+        self.assertEqual("foo", item.name)
+        self.assertEqual(1, item.sell_in)
+        self.assertEqual(3, item.quality)
 
 class BackstageTest(unittest.TestCase):
     def test_backstage_passes_quality_increase_by_1(self):
         item = Backstage("Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20)
-        gilded_rose = item.update_quality()  
+        item.update_quality()  
         self.assertEqual(14, item.sell_in)
         self.assertEqual(21, item.quality)
 

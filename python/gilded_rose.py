@@ -23,13 +23,12 @@ class StandardItem(Item):
         super().__init__(name, sell_in, quality)
 
     def update_quality(self):        
-
         if self.sell_in <= 0:
             self.quality -= 2  # After sell-in date passes, quality degrades by 2
         else:
             self.quality -= 1
-        self.sell_in -= 1    
-
+        self.sell_in -= 1
+        
         # Enforce quality limits
         if self.quality < 0:
             self.quality = 0
