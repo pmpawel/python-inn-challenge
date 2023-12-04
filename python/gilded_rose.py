@@ -65,6 +65,7 @@ class Backstage(Item):
         super().__init__(name, sell_in, quality)
 
     def update_quality(self):
+        print(self)
         if self.sell_in > 10:
             self.quality += 1
         elif 5 < self.sell_in <= 10:
@@ -76,8 +77,8 @@ class Backstage(Item):
 
         if self.quality > 50:
             self.quality = 50
-
         self.sell_in -= 1
+        print(self)
 
 class ConjuredItem(Item):
     def __init__(self, name, sell_in, quality):

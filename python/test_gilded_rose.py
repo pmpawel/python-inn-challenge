@@ -31,27 +31,6 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(22, items[0].sell_in)
         self.assertEqual(1, items[0].quality)
 
-    def test_backstage_passes_quality_increase(self):
-        items = [Backstage("Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20)]
-        gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()        
-        self.assertEqual(14, items[0].sell_in)
-        self.assertEqual(21, items[0].quality)
-
-    def test_backstage_passes_quality_increase_by_2(self):
-        items = [Backstage("Backstage passes to a TAFKAL80ETC concert", sell_in=8, quality=20)]
-        gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()        
-        self.assertEqual(7, items[0].sell_in)
-        self.assertEqual(22, items[0].quality)
-
-    def test_backstage_passes_quality_increase_by_3(self):
-        items = [Backstage("Backstage passes to a TAFKAL80ETC concert", sell_in=2, quality=20)]
-        gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()      
-        self.assertEqual(1, items[0].sell_in)
-        self.assertEqual(23, items[0].quality)
-
     def test_conjured_decrease_quality_by_2(self):
         items = [ConjuredItem("Conjured Mana Cake", sell_in=2, quality=10)]
         gilded_rose = GildedRose(items)
@@ -65,6 +44,26 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality() 
         self.assertEqual(-3, items[0].sell_in)
         self.assertEqual(6, items[0].quality)             
+
+
+class BackstageTest(unittest.TestCase):
+    def test_backstage_passes_quality_increase_by_1(self):
+        item = Backstage("Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20)
+        gilded_rose = item.update_quality()  
+        self.assertEqual(14, item.sell_in)
+        self.assertEqual(21, item.quality)
+
+    def test_backstage_passes_quality_increase_by_2(self):
+        item = Backstage("Backstage passes to a TAFKAL80ETC concert", sell_in=8, quality=20)
+        item.update_quality()        
+        self.assertEqual(7, item.sell_in)
+        self.assertEqual(22, item.quality)
+
+    def test_backstage_passes_quality_increase_by_3(self):
+        item = Backstage("Backstage passes to a TAFKAL80ETC concert", sell_in=2, quality=20)
+        item.update_quality()      
+        self.assertEqual(1, item.sell_in)
+        self.assertEqual(23, item.quality)
 
 if __name__ == '__main__':
     unittest.main()
