@@ -24,13 +24,6 @@ class GildedRoseTest(unittest.TestCase):
         # quality should remain 0 as described in requirements. quality value 0 - 50
         self.assertEqual(50, items[0].quality)
 
-    def test_aged_brie_quality_increase(self):
-        items = [AgedBrie(name="Aged Brie", sell_in=23, quality=0)]
-        gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()        
-        self.assertEqual(22, items[0].sell_in)
-        self.assertEqual(1, items[0].quality)
-
     def test_conjured_decrease_quality_by_2(self):
         items = [ConjuredItem("Conjured Mana Cake", sell_in=2, quality=10)]
         gilded_rose = GildedRose(items)
@@ -64,6 +57,13 @@ class BackstageTest(unittest.TestCase):
         item.update_quality()      
         self.assertEqual(1, item.sell_in)
         self.assertEqual(23, item.quality)
+
+class AgedBrieTest(unittest.TestCase):
+    def test_aged_brie_quality_increase(self):
+        item = AgedBrie(name="Aged Brie", sell_in=23, quality=0)
+        item.update_quality()        
+        self.assertEqual(22, item.sell_in)
+        self.assertEqual(1, item.quality)
 
 if __name__ == '__main__':
     unittest.main()
