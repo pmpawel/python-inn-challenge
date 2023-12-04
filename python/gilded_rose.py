@@ -47,6 +47,12 @@ class AgedBrie(Item):
             self.quality += 1
         self.sell_in -= 1
 
+        # Enforce quality limits
+        if self.quality < 0:
+            self.quality = 0
+        elif self.quality > 50:
+            self.quality = 50
+
 class Sulfuras(Item):
     def __init__(self, name, sell_in, quality):
         super().__init__(name, sell_in, quality)
@@ -68,10 +74,10 @@ class Backstage(Item):
         else:
             self.quality = 0
 
-        self.sell_in -= 1
-
         if self.quality > 50:
             self.quality = 50
+
+        self.sell_in -= 1
 
 class ConjuredItem(Item):
     def __init__(self, name, sell_in, quality):
@@ -84,4 +90,10 @@ class ConjuredItem(Item):
             else:
                 self.quality -= 2  # Quality degrades by 2 for Conjured items
         self.sell_in -= 1    
+
+        # Enforce quality limits
+        if self.quality < 0:
+            self.quality = 0
+        elif self.quality > 50:
+            self.quality = 50
 
