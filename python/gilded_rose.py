@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
 class GildedRose(object):
-
     def __init__(self, items):
         self.items = items
 
     def update_quality(self):
-    
+        # Loop through Items list
         for item in self.items:
             item.update_quality()
 
@@ -57,6 +56,7 @@ class Sulfuras(Item):
     def __init__(self, name, sell_in, quality):
         super().__init__(name, sell_in, quality)
     
+    # Do nothing as values don't change. 
     def update_quality(self):
         pass
 
@@ -65,7 +65,6 @@ class Backstage(Item):
         super().__init__(name, sell_in, quality)
 
     def update_quality(self):
-        print(self)
         if self.sell_in > 10:
             self.quality += 1
         elif 5 < self.sell_in <= 10:
@@ -78,7 +77,6 @@ class Backstage(Item):
         if self.quality > 50:
             self.quality = 50
         self.sell_in -= 1
-        print(self)
 
 class ConjuredItem(Item):
     def __init__(self, name, sell_in, quality):
@@ -97,4 +95,3 @@ class ConjuredItem(Item):
             self.quality = 0
         elif self.quality > 50:
             self.quality = 50
-

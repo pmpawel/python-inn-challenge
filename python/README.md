@@ -1,4 +1,4 @@
-# Gilded Rose starting position in Python
+# Gilded Rose starting position in Python - Pawel Miszkurka
 
 ## Run the unit tests from the Command-Line
 
@@ -22,4 +22,4 @@ You should make sure the command shown above works when you execute it in a term
 There are instructions in the [TextTest Readme](../texttests/README.md) for setting up TextTest. You will need to specify the Python executable and interpreter in [config.gr](../texttests/config.gr). Uncomment these lines:
 
     executable:${TEXTTEST_HOME}/python/texttest_fixture.py
-    interpreter:python
+    interpreter:python3
